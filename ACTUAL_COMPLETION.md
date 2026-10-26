@@ -22,12 +22,12 @@ Any score previously claiming 95–99% was based on **spec and architectural doc
 
 | Repository | Tech Stack | Production Code | Test Code | Passing Tests | CI Pipeline | Deployment Artifacts | Evidence Score |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **`hostly-edge`** | Rust 2024 (Hyper/Tokio) | 14 files / 3,145 loc | Embedded in src | **26 tests** | `ci/workflow-ci.yml` | Multi-stage `Dockerfile` | **86%** |
-| **`hostly-control-plane`**| Elixir 1.17 / OTP 27 | 55 files / 8,020 loc | 29 files / 3,100 loc | **130 tests** | `ci/workflow-ci.yml` | Multi-stage `Dockerfile` | **86%** |
-| **`hostly-cli`** | Rust 2024 (Clap/Tokio) | 2 files / 4,025 loc | Embedded in src | **13 tests** | `ci/workflow-ci.yml` | Compiled binary + Nix | **88%** |
+| **`hostly-edge`** | Rust 2024 (Hyper/Tokio) | 14 files / 3,189 loc | Embedded in src | **28 tests** | `ci/workflow-ci.yml` | Multi-stage `Dockerfile` | **88%** |
+| **`hostly-control-plane`**| Elixir 1.17 / OTP 27 | 60 files / 9,502 loc | 33 files / 4,582 loc | **148 tests** | `ci/workflow-ci.yml` | Multi-stage `Dockerfile` | **92%** |
+| **`hostly-cli`** | Rust 2024 (Clap/Tokio) | 2 files / 4,316 loc | Embedded in src | **13 tests** | `ci/workflow-ci.yml` | Compiled binary + Nix | **90%** |
 | **`hostly-hostlet`** | Rust 2024 (Nix/POSIX) | 18 files / 3,450 loc | Embedded in src | **25 tests** | `ci/workflow-ci.yml` | Multi-stage `Dockerfile` | **72%** |
-| **`hostly-contracts`** | Protobuf v3 & SQL | 32 files / 2,890 loc | Schema validation | **Protos linted** | `ci/workflow-ci.yml` | 12 applied Postgres migrations | **84%** |
-| **`hostly-internal`** | Bash / Python / SQL | 25 scripts / 4,100 loc| 18 drill scripts | **18 drills** | WebSphere Slice Verified | Local Compose testbeds | **88%** |
+| **`hostly-contracts`** | Protobuf v3 & SQL | 33 files / 3,295 loc | Schema validation | **Protos linted** | `ci/workflow-ci.yml` | 13 applied Postgres migrations | **88%** |
+| **`hostly-internal`** | Bash / Python / SQL | 27 scripts / 4,505 loc| 20 drill scripts | **20 drills** | WebSphere Slice Verified | Local Compose testbeds | **90%** |
 | **`hostly-infra`** | Nix / Shell | 1 file / 50 loc | 0 tests | **0 tests** | None | `flake.nix` skeleton | **22%** |
 | **`hostly-ui`** | TS / React / Tailwind | 32 files / 1,886 loc | 0 tests | **0 tests** | `ci/workflow-ci.yml` | Deferred (Zero UI phase) | **28%** |
 | **`hostly-web`** | Elixir / Phoenix LiveView| 8 files / 534 loc | 0 tests | **0 tests** | None | Deferred (Zero UI phase) | **12%** |
@@ -35,9 +35,9 @@ Any score previously claiming 95–99% was based on **spec and architectural doc
 | **`hostly-docs`** | Markdown Documentation | 0 code files | 0 tests | **0 tests** | None | Documentation only | **0% (Docs)** |
 | **`hostly-runtime-solutions`**| Markdown Documentation | 0 code files | 0 tests | **0 tests** | None | Documentation only | **0% (Docs)** |
 
-**Total Tested Production Code:** **23,680 lines** across Rust, Elixir, SQL, and Protobuf.  
-**Total Automated Unit & Integration Tests:** **194 passing tests** (64 Rust, 130 Elixir) + 18 verified system drills.  
-**Real Weighted Platform Completion:** **~74.8%** (Gate 0 Security Containment, Gate 1 Vertical Slice & WebSphere End-to-End Vertical Slice 100% COMPLETE & VERIFIED).
+**Total Tested Production Code:** **25,752 lines** across Rust, Elixir, SQL, and Protobuf.  
+**Total Automated Unit & Integration Tests:** **214 passing tests** (66 Rust, 148 Elixir) + 20 verified system drills.  
+**Real Weighted Platform Completion:** **~78.4%** (Gate 0 Security Containment, Gate 1 Vertical Slice & WebSphere 2.0 Multi-Workload Engine 100% COMPLETE & VERIFIED).
 
 ---
 
