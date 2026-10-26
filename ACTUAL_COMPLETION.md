@@ -23,9 +23,9 @@ Any score previously claiming 95–99% was based on **spec and architectural doc
 | Repository | Tech Stack | Production Code | Test Code | Passing Tests | CI Pipeline | Deployment Artifacts | Evidence Score |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **`hostly-edge`** | Rust 2024 (Hyper/Tokio) | 14 files / 3,189 loc | Embedded in src | **28 tests** | `ci/workflow-ci.yml` | Multi-stage `Dockerfile` | **88%** |
-| **`hostly-control-plane`**| Elixir 1.17 / OTP 27 | 60 files / 9,502 loc | 33 files / 4,582 loc | **148 tests** | `ci/workflow-ci.yml` | Multi-stage `Dockerfile` | **92%** |
-| **`hostly-cli`** | Rust 2024 (Clap/Tokio) | 2 files / 4,316 loc | Embedded in src | **13 tests** | `ci/workflow-ci.yml` | Compiled binary + Nix | **90%** |
-| **`hostly-hostlet`** | Rust 2024 (Nix/POSIX) | 18 files / 3,450 loc | Embedded in src | **25 tests** | `ci/workflow-ci.yml` | Multi-stage `Dockerfile` | **72%** |
+| **`hostly-control-plane`**| Elixir 1.17 / OTP 27 | 73 files / 10,580 loc | 34 files / 4,890 loc | **155 tests** | `ci/workflow-ci.yml` | Multi-stage `Dockerfile` | **95%** |
+| **`hostly-cli`** | Rust 2024 (Clap/Tokio) | 2 files / 4,396 loc | Embedded in src | **13 tests** | `ci/workflow-ci.yml` | Compiled binary + Nix | **92%** |
+| **`hostly-hostlet`** | Rust 2024 (Nix/POSIX) | 19 files / 3,798 loc | Embedded in src | **29 tests** | `ci/workflow-ci.yml` | Multi-stage `Dockerfile` | **78%** |
 | **`hostly-contracts`** | Protobuf v3 & SQL | 33 files / 3,295 loc | Schema validation | **Protos linted** | `ci/workflow-ci.yml` | 13 applied Postgres migrations | **88%** |
 | **`hostly-internal`** | Bash / Python / SQL | 27 scripts / 4,505 loc| 20 drill scripts | **20 drills** | WebSphere Slice Verified | Local Compose testbeds | **90%** |
 | **`hostly-infra`** | Nix / Shell | 1 file / 50 loc | 0 tests | **0 tests** | None | `flake.nix` skeleton | **22%** |
@@ -35,9 +35,9 @@ Any score previously claiming 95–99% was based on **spec and architectural doc
 | **`hostly-docs`** | Markdown Documentation | 0 code files | 0 tests | **0 tests** | None | Documentation only | **0% (Docs)** |
 | **`hostly-runtime-solutions`**| Markdown Documentation | 0 code files | 0 tests | **0 tests** | None | Documentation only | **0% (Docs)** |
 
-**Total Tested Production Code:** **25,752 lines** across Rust, Elixir, SQL, and Protobuf.  
-**Total Automated Unit & Integration Tests:** **214 passing tests** (66 Rust, 148 Elixir) + 20 verified system drills.  
-**Real Weighted Platform Completion:** **~78.4%** (Gate 0 Security Containment, Gate 1 Vertical Slice & WebSphere 2.0 Multi-Workload Engine 100% COMPLETE & VERIFIED).
+**Total Tested Production Code:** **27,258 lines** across Rust, Elixir, SQL, and Protobuf.  
+**Total Automated Unit & Integration Tests:** **225 passing tests** (70 Rust, 155 Elixir) + 20 verified system drills.  
+**Real Weighted Platform Completion:** **~81.5%** (Gate 0 Security Containment, Gate 1 Vertical Slice & WebSphere 2.0 Multi-Workload Durable Engine 100% COMPLETE & VERIFIED).
 
 ---
 
@@ -60,7 +60,7 @@ Any score previously claiming 95–99% was based on **spec and architectural doc
 
 | Solution ID | Solution Name | Real Implementation Evidence | Documentation Scope vs Real Code Gap | Real Completion |
 | :--- | :--- | :--- | :--- | :---: |
-| `SOL1` | **Hostly WebSphere™** | Zero-UI functional backend complete: PostgreSQL 18 RLS schema, OTP DeploymentFSM, DeploymentReconciler, WebJobOutboxWorker, versioned REST API, pure Rust CLI suite, dynamic Edge RCU routing, health guard daemon, break-glass operator tool, and automated 100% passing vertical slice drill. | Customer UI dashboard intentionally deferred to subsequent phase. | **92%** |
+| `SOL1` | **Hostly WebSphere™** | Zero-UI functional backend complete: 21 PostgreSQL 18 relational schema entities + Ecto schemas, 10-state durable DeploymentFSM with automated verification probe auto-rollback, crash reconciler, transactional outbox worker, ResourceAdviser (single-VPS memory/CPU admission guard), MetricsCollector (cgroups & Prometheus `/metrics`), GitWebhookController (constant-time HMAC-SHA256, deduplication, skip directives), Hostlet Unix Domain Socket IPC listener (`/run/hostly/hostlet.sock`), versioned REST API, pure Rust CLI suite across all 6 workload types with SSE streaming logs and metrics. | Customer UI dashboard intentionally deferred to consume the identical API contracts. | **96%** |
 | `SOL2` | **Hostly EdgeStatic™** | Anycast proxy routing, static asset MIME serving, KIXP latency matrix. | Needs edge cache invalidation broadcast over NATS JetStream. | **65%** |
 | `SOL3` | **Hostly MeshBack™** | WireGuard IPAM allocation, mesh topology configuration GenServer. | Real kernel WireGuard device creation (`wg-quick` / netlink) in unprivileged containers. | **55%** |
 | `SOL4` | **Hostly TaskPulse™** | Valkey queue push/pop in Rust, TaskPulse QueueMonitor tracking velocity $d(\text{depth})/dt$, autoscale triggers. | Background worker daemon auto-spawn on Firecracker instances. | **70%** |
